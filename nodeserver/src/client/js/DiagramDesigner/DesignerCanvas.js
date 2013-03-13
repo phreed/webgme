@@ -100,12 +100,12 @@ define(['logManager',
         this._documentFragment = document.createDocumentFragment();
 
         //in DEBUG mode add additional content to canvas
-        if (commonUtil.DEBUG) {
+        if (commonUtil.DEBUG === true) {
             this._addDebugModeExtensions();
         }
 
         /************** ROUTING MANAGER SELECTION **************************/
-        if (commonUtil.DEBUG) {
+        if (commonUtil.DEBUG === true) {
             this.$btnGroupConnectionRouteManager = this.addButtonGroup(function (event, data) {
                 self._onConnectionRouteManagerChanged(data.type);
             });
@@ -121,7 +121,7 @@ define(['logManager',
         /************** END OF - ROUTING MANAGER SELECTION **************************/
 
         /************** READ ONLY MODE **************************/
-        if (commonUtil.DEBUG) {
+        if (commonUtil.DEBUG === true) {
             this.$btnGroupReadOnly = this.addButtonGroup(function (event, data) {
                 self.setReadOnlyMode(data.mode);
             });
@@ -276,7 +276,7 @@ define(['logManager',
             this.skinParts.$readOnlyMode.hide();
         }
 
-        if (commonUtil.DEBUG) {
+        if (commonUtil.DEBUG === true) {
             this.skinParts.$progressText = $('<div/>', {
                 "class": "inline"
             });
@@ -294,23 +294,27 @@ define(['logManager',
             self._itemAutoLayout(data.mode);
         });
 
-        this.addButton({ "title": "Grid layout",
-            "icon": "icon-th",
-            "data": { "mode": "grid" }}, this.skinParts.$btnGroupItemAutoOptions );
+        if (commonUtil.DEBUG !== "DEMOHACK") {
+            this.addButton({ "title": "Grid layout",
+                "icon": "icon-th",
+                "data": { "mode": "grid" }}, this.skinParts.$btnGroupItemAutoOptions );
+        }
 
-        if (commonUtil.DEBUG) {
+        if (commonUtil.DEBUG === true) {
             this.addButton({ "title": "Diagonal",
                 "icon": "icon-signal",
                 "data": { "mode": "diagonal" }}, this.skinParts.$btnGroupItemAutoOptions );
         }
 
         /************** PROPERTIES BUTTON ***********************/
-        this.skinParts.$btnGroupProperties = this.addButtonGroup(function (event, data) {
-            self._showProperties();
-        });
+        if (commonUtil.DEBUG !== "DEMOHACK") {
+            this.skinParts.$btnGroupProperties = this.addButtonGroup(function (event, data) {
+                self._showProperties();
+            });
 
-        this.addButton({ "title": "Properties",
-            "icon": "icon-list-alt"}, this.skinParts.$btnGroupProperties );
+            this.addButton({ "title": "Properties",
+                "icon": "icon-list-alt"}, this.skinParts.$btnGroupProperties );
+        }
 
         //CHILDREN container
         this.skinParts.$itemsContainer = $('<div/>', {
@@ -503,7 +507,7 @@ define(['logManager',
             msg += " Deleted: " + deletedLen;
 
             this.logger.debug(msg);
-            if (commonUtil.DEBUG) {
+            if (commonUtil.DEBUG === true) {
                 this.skinParts.$progressText.text(msg);
             }
 
@@ -990,7 +994,7 @@ define(['logManager',
     _.extend(DesignerCanvas.prototype, DesignerCanvasSubcomponents.prototype);
 
     //in DEBUG mode add additional content to canvas
-    if (commonUtil.DEBUG) {
+    if (commonUtil.DEBUG === true) {
         _.extend(DesignerCanvas.prototype, DesignerCanvasDEBUG.prototype);
     }
 
