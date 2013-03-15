@@ -14,7 +14,7 @@ define([], function () {
         /*
          * is the application running in debug more or not
          */
-        DEBUG: false, // true / false / 'DEMOHACK',
+        DEBUG: 'DEMOHACK', // true / false / 'DEMOHACK',
 
         /*
          * Generated a GUID
@@ -142,9 +142,9 @@ define([], function () {
             mongosrv        : "/datamongo",
             rootsrv         : "/root",
             projsrv         : "/project",
-            mongoip         : "129.59.105.239",
+            mongoip         : "127.0.0.1",
             mongoport       : 27017,
-            mongodatabase   : "multi",
+            mongodatabase   : "gme",
             mongoopt        : {
                 'auto_reconnect' : true,
                 'poolSize'       : 5,
@@ -166,7 +166,7 @@ define([], function () {
                 'log level'          : 1
             },
             nosaveddata     : true,
-            project         : "dd2"
+            project         : "demo"
 
         }
 

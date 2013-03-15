@@ -12,7 +12,7 @@ requirejs.config({
 });
 
 requirejs(['server/proxysrv','logManager'],function(PROXY,logManager){
-    logManager.setLogLevel(logManager.logLevels.WARNING);
+    logManager.setLogLevel(logManager.logLevels.ALL);
     logManager.useColors(true);
     var Server = function(parameters){
         var logger = logManager.create("combined-server");
