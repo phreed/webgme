@@ -8,8 +8,6 @@
 
 'use strict';
 
-require('systemd');
-require('autoquit');
 
 var Path = require('path'),
     OS = require('os'),
@@ -22,7 +20,7 @@ var Path = require('path'),
     methodOverride = require('method-override'),
     multipart = require('connect-multiparty'),
     Http = require('http'),
-    systemdSocket = require('systemd-socket'),
+    // systemdSocket = require('systemd-socket'),
     URL = require('url'),
     ejs = requireJS('common/util/ejs'),
 
@@ -198,13 +196,14 @@ function StandAloneServer(gmeConfig) {
             }
         });
 
-        // https://github.com/rubenv/node-autoquit
-        // __httpServer.autoQuit({ timeout: (gmeConfig.server.timeout ? gmeConfig.server.timeout : 1800)});
-
-        // https://github.com/herzi/systemd-socket
-        __httpServer.listen(systemdSocket() || gmeConfig.server.port, function () {
+        // https://nodejs.org/api/http.html#http_server_listen_handle_callback
+        var systemdSocket = /* (!process.env.LISTEN_FDS) ? null : */ { fd: 3 };
+        __httpServer.listen(systemdSocket || gmeConfig.server.port, function () {
             // Note: the listening function does not return with an error, errors are handled by the error event
-            logger.debug('Http server is listening on ', {metadata: {port: port}});
+            logger.error('Http server is listening on ',
+                         {metadata: {fd: systemdSocket,
+                                     port: gmeConfig.server.port,
+                                     systemd: process.env.LISTEN_FDS}});
             serverDeferred.resolve();
         });
 
