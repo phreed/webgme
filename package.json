@@ -1,6 +1,6 @@
 {
   "name": "webgme",
-  "version": "2.1.0-beta1",
+  "version": "2.1.0",
   "description": "Web based graphical domain specific modeling environments",
   "main": "./lib/webgme.js",
   "typings": "./lib/webgme.d.ts",
