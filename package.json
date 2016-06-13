@@ -2,6 +2,8 @@
   "name": "webgme",
   "version": "2.1.0-beta1",
   "description": "Web based graphical domain specific modeling environments",
+  "main": "./lib/webgme.js",
+  "typings": "./lib/webgme.d.ts",
   "engines": {
     "node": ">=0.12.0 <5.0.0"
   },
@@ -98,7 +100,6 @@
     "run-sequence": "1.1.5",
     "ssl-root-cas": "1.1.10"
   },
-  "main": "webgme",
   "scripts": {
     "docs": "./node_modules/.bin/jsdoc -c jsdoc_conf.json",
     "start": "node ./src/bin/start_server.js",
