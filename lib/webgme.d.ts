@@ -8,7 +8,7 @@ export declare namespace gme {
     serialize(): any;
   }
 
-  export interface PluginBase {
+  export class PluginBase {
     activeNode: any;
     activeSelection: any[];
     blobClient: any;
