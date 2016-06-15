@@ -2,7 +2,7 @@
 https://editor.webgme.org/docs/source/index.html
 */
 
-export declare namespace webgme {
+export declare namespace gme {
 
   export interface PluginConfig {
     serialize(): any;
@@ -46,3 +46,6 @@ export declare namespace webgme {
   }
 
 }
+
+export var PluginConfig: gme.PluginConfig;
+export var PluginBase: gme.PluginBase;
